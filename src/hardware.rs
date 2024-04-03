@@ -40,13 +40,13 @@ type CategoryMap = HashMap<System, HashMap<JobSize, HardwareCategory>>;
 pub struct Config {
     categories: CategoryMap,
     tags: Vec<String>,
-    metros: Vec<String>,
+    metro: String,
 }
 
 pub struct DesiredHardwareConfig {
     pub plans: Vec<HardwarePlan>,
     pub tags: Vec<String>,
-    pub metros: Vec<String>,
+    pub metro: String,
 }
 
 pub fn parse_config_file(file: &Path) -> Result<Config> {
@@ -119,12 +119,10 @@ pub async fn get_desired_hardware(
 
     let mut tags = config.tags;
     tags.dedup();
-    let mut metros = config.metros;
-    metros.dedup();
 
     Ok(DesiredHardwareConfig {
         plans: desired_hardware,
         tags,
-        metros,
+        metro: config.metro,
     })
 }

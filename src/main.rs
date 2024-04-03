@@ -111,7 +111,7 @@ async fn real_main(
             &equinix_project_id,
             desired.clone(),
             &desired_hardware.tags,
-            &desired_hardware.metros,
+            &desired_hardware.metro,
         )
         .await?;
     }

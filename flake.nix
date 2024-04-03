@@ -78,14 +78,12 @@
 
             config = lib.mkOption {
               type = lib.types.submodule {
-                options.metros = lib.mkOption {
-                  type = with lib.types; listOf str;
+                options.metro = lib.mkOption {
+                  type = with lib.types; nullOr str;
                   description = lib.mdDoc ''
                     Metro code or ID of where the instance should be provisioned in.
                   '';
-                  example = [
-                    "any"
-                  ];
+                  example = "any";
                 };
                 options.tags = lib.mkOption {
                   type = with lib.types; listOf str;
